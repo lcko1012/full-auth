@@ -14,6 +14,10 @@ app.use(fileUpload({
     useTempFiles: true
 }))
 
+
+//Routes
+app.use('/user', require('./routes/userRouter'))
+
 app.use('/', (req, res, next) => {
     res.json({
         msg: "hello world!!"

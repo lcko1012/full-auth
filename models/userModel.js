@@ -23,8 +23,10 @@ const userSchema = new mongoose.Schema({
 
     avatar: {
         type: String,
-        default: ""
+        default: "https://res.cloudinary.com/bach-khoa-da-nang/image/upload/v1613827580/avatar/download_giqx2b.jpg"
     }
+}, {
+    timestamps: true
 })
 
 
