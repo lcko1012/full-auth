@@ -33,15 +33,38 @@ const userCtrl =  {
             }
 
             const activation_token = createActivationToken(newUser)
-
+            
+            //send mail activation
             const url = `${CLIENT_URL}/user/activate/${activation_token}`
 
-            sendMail(email, url)
+            sendMail(email, url, "Verify your email address")
 
             console.log({activation_token})
 
             res.json({msg: "Register Success! Please activate your email to start"})
         }catch(err){
+            return res.status(500).json({msg: err.message})
+        }
+    },
+    activateEmail: async (req, res) => {
+        try {
+            const {activation_token} = req.body
+            const user = jwt.verify(activation_token, process.env.ACTIVATION_TOKEN_SECRET)
+
+            console.log(user)
+            const {name, email, password} = user
+            const check = await Users.findOne({email})
+            
+            if(check) return res.status(400).json({msg: "This email alread exists"})
+
+            const newUser = new Users({
+                name, email, password
+            })
+
+            await newUser.save()
+
+            res.json({msg: "Account has been activated"})
+        } catch (err) {
             return res.status(500).json({msg: err.message})
         }
     }
