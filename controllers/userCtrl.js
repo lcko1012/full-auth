@@ -83,8 +83,24 @@ const userCtrl =  {
                 path: '/user/refresh_token',
                 maxAge: 7*24*60*60*1000 // 7 days
             })
-            
+
             res.json({msg: "Login Success!"})
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+    getAccessToken : async (req, res) => {
+        try {
+            const rf_token = req.cookies.refreshtoken
+            if(!rf_token) return res.status(400).json({msg: "Please login now!"})
+
+            jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+                if(err) return res.status(400).json({msg: "Please login now!"})
+
+                const access_token = createAccessToken({id: user.id})
+                res.json({access_token})
+                console.log(user)
+            })
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
