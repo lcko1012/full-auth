@@ -83,7 +83,6 @@ const userCtrl =  {
                 path: '/user/refresh_token',
                 maxAge: 7*24*60*60*1000 // 7 days
             })
-
             res.json({msg: "Login Success!"})
         } catch (err) {
             return res.status(500).json({msg: err.message})
@@ -133,6 +132,14 @@ const userCtrl =  {
             res.json({msg: "Password successfully changed"})
         } catch (err) {
             return res.status(500).json({msg: err.message})
+        }
+    },
+    getUserInfor: async (req, res) => {
+        try {
+            const user = await Users.findById(req.user.id).select('-password')
+            res.json(user)
+        } catch (err) {
+            return res.status(400).json({msg: err.message})
         }
     }
 }
