@@ -141,7 +141,8 @@ const userCtrl =  {
         } catch (err) {
             return res.status(400).json({msg: err.message})
         }
-    }
+    },
+
 }
 
 const createActivationToken = (payload) => {
