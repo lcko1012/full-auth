@@ -16,4 +16,7 @@ router.get('/infor', auth, userCtrl.getUserInfor)
 //get all users with admin
 router.get('/all_infor', auth ,authAdmin,userCtrl.getUsersAllInfor)
 
+//log out
+router.get("/logout", userCtrl.logout)
+
 module.exports = router
