@@ -1,6 +1,6 @@
 const Users = require('../models/userModel')
 
-const authAdmin = (req, res, next) => {
+const authAdmin = async (req, res, next) => {
     try {
         const user = await Users.findOne({_id: req.user.id})
 
