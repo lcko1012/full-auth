@@ -19,4 +19,7 @@ router.get('/all_infor', auth ,authAdmin,userCtrl.getUsersAllInfor)
 //log out
 router.get("/logout", userCtrl.logout)
 
+//update
+router.patch('/update', auth, userCtrl.updateUser)
+
 module.exports = router

@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: Number,
-        dafault: 0 // 0 = user, 1 = admin
+        default: 0 // 0 = user, 1 = admin
     },
 
     avatar: {
