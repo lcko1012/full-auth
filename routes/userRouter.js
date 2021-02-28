@@ -22,4 +22,7 @@ router.get("/logout", userCtrl.logout)
 //update
 router.patch('/update', auth, userCtrl.updateUser)
 
+//update user permissions
+router.patch('/update_role/:id', auth, authAdmin, userCtrl.updateUsersRole)
+
 module.exports = router
