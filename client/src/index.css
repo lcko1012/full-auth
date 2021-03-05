@@ -39,3 +39,6 @@ button{
 }
 
 @import url("./components/header/header.css");
+
+
+@import url("./components/body/auth/auth.css");

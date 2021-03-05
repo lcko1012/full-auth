@@ -9,10 +9,10 @@ function Header() {
 
             <ul>
                 <li>
-                    <Link to="/"><i class="fas fa-shopping-cart"></i>Cart</Link>
+                    <Link to="/"><i className="fas fa-shopping-cart"></i>Cart</Link>
                 </li>
                 <li>
-                    <Link to="/"><i class="fas fa-user"></i>Sign in</Link>
+                    <Link to="/"><i className="fas fa-user"></i>Sign in</Link>
                 </li>
             </ul>
         </header>
