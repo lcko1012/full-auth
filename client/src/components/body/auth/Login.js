@@ -27,7 +27,7 @@ function Login() {
         console.log("call submit function")
         e.preventDefault()
         try {
-            const res = await axios.post('http://localhost:5000/user/login' , {email, password})
+            const res = await axios.post('http://localhost:5000/user/login' , {email, password}, {withCredentials: true})
             
             setUser({...user, err: '', success: res.data.msg})
             localStorage.setItem('firstLogin' , true)

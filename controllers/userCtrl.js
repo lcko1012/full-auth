@@ -83,6 +83,7 @@ const userCtrl =  {
                 path: '/user/refresh_token',
                 maxAge: 7*24*60*60*1000 // 7 days
             })
+            
             res.json({msg: "Login Success!"})
         } catch (err) {
             return res.status(500).json({msg: err.message})
@@ -90,11 +91,13 @@ const userCtrl =  {
     },
     getAccessToken : async (req, res) => {
         try {
+            
             const rf_token = req.cookies.refreshtoken
-            if(!rf_token) return res.status(400).json({msg: "Please login now!"})
+        
+            if(!rf_token) return res.status(400).json({msg: "Please login now! dont have cookie"})
 
             jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
-                if(err) return res.status(400).json({msg: "Please login now!"})
+                if(err) return res.status(400).json({msg: "Please login now! sai token"})
 
                 const access_token = createAccessToken({id: user.id})
                 res.json({access_token})

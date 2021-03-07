@@ -1,5 +1,6 @@
 const ACTIONS = {
-    LOGIN: 'LOGIN'
+    LOGIN: 'LOGIN',
+    GET_TOKEN: 'GET_TOKEN'
 }
 
 
