@@ -6,11 +6,14 @@ import Body from './components/body/Body'
 import Header from './components/header/Header'
 import axios from 'axios'
 
+import {dispatchLogin, fetchUser, dispatchGetUser} from './redux/actions/authAction'
+
 function App() {
   const dispatch = useDispatch()
   const token = useSelector(state => state.token)
   const auth = useSelector(state => state.auth)
 
+  //TODO: maintain login
   useEffect(() => {
     const firstLogin = localStorage.getItem('firstLogin')
     if(firstLogin){
@@ -28,6 +31,19 @@ function App() {
     }
   }, [auth.isLogged, dispatch])
 
+  //TODO: Take infor
+  useEffect(() => {
+    if(token){
+      const getUser = () => {
+        dispatch(dispatchLogin())
+
+        return fetchUser(token).then(res => {
+          dispatch(dispatchGetUser(res))
+        })
+      }
+      getUser()
+    }
+  }, [token, dispatch])
 
   return (
     <Router>

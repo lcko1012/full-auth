@@ -8,13 +8,24 @@ function Header() {
     // console.log(auth)
     const {user, isLogged} = auth
 
+    
+
     const userLink = () => {
-        return <li>
-            <Link>
-            <img src={user.avatar} alt="" />
-            {user.name}
+        return <li className="drop-nav">
+            <Link to="#" className="avatar"> 
+            <img src={user.avatar} alt="" /> 
+            {user.name}<i class="fas fa-caret-down"></i>
             </Link>
+            <ul className="dropdown">
+                <li><Link to="/profile">Profile</Link></li>
+                <li><Link to="/">Logout</Link></li>
+
+            </ul>
         </li>
+    }
+
+    const transForm = {
+        transform: isLogged ? "translateY(-5px)" : 0
     }
 
     return (
@@ -23,7 +34,7 @@ function Header() {
                 <h1><Link to="/">KO SHOP</Link></h1>
             </div>
 
-            <ul>
+            <ul style={transForm}>
                 <li>
                     <Link to="/"><i className="fas fa-shopping-cart"></i>Cart</Link>
                 </li>

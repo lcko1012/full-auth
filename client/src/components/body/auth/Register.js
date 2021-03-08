@@ -26,19 +26,19 @@ function Register() {
     const handleSubmit = async e => {
         
         e.preventDefault()
-         //Kiem tra nhap day du thong tin
+        //Kiem tra nhap day du thong tin
         if(isEmpty(name) || isEmpty(password))
             return setUser({...user, err: 'Please fill in all fields', success: ''})
 
-     //Kie tra cu phap email
+        //Kiem tra cu phap email
         if(!isEmail(email))
             return setUser({...user, err: 'Invalid emails', success:''})
     
-     //Kiem tra do dai cua password
+        //Kiem tra do dai cua password
         if(isLength(password))
             return setUser({...user, err: "Password must be at least 6 characters", success: ''})
     
-     //Kiem tra confirm password
+        //Kiem tra confirm password
         if(!isMatch(cf_password, password))
             return setUser({...user, err:"Password is not match", success: ''})
         try {
