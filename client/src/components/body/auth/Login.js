@@ -42,7 +42,6 @@ function Login() {
 
     return (
         <div className="login_page">
-            
             <h2>Login</h2>
             {err && showErrMsg(err)}
             {success && showSuccessMsg(success)}
