@@ -28,4 +28,7 @@ router.patch('/update_role/:id', auth, authAdmin, userCtrl.updateUsersRole)
 //delete user
 router.delete('/delete/:id', auth, authAdmin, userCtrl.deleteUser)
 
+//Social Login
+router.post('/google_login', userCtrl.googleLogin)
+
 module.exports = router
