@@ -17,10 +17,9 @@ function App() {
   useEffect(() => {
     const firstLogin = localStorage.getItem('firstLogin')
     if(firstLogin){
+      
       const getToken = async () => {
         const res = await axios.post("http://localhost:5000/user/refresh_token", null, {withCredentials: true})
-        // .then(res =>console.log(res))
-        // .catch(err => console.log(err.response))
         if(res){
           console.log("access" ,res.data.access_token)
           dispatch({type: 'GET_TOKEN', payload: res.data.access_token})
